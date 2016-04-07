@@ -1,0 +1,77 @@
+/*
+ * Default Styles for memcached-monitor
+*/
+
+#memcache-debug {
+	max-width: 1000px;
+	padding: 10px 100px;
+	font-size: 11px;
+	background-color: #FFFFFF;
+	color: #333333;
+}
+
+#memcache-debug h2 {
+	font-size: 16px;
+	font-weight: bold;
+	color: #464646;
+	margin-bottom: 0px;
+}
+
+#memcache-debug h3 {
+	margin: 5px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#memcache-debug table{
+	margin-top: 10px;
+	min-width: 250px;
+}
+
+#memcache-debug thead{
+	background-color: #F1F1F1;
+}
+
+#memcache-debug tbody{
+	background-color: #F9F9F9;
+}
+
+#memcache-debug th, #memcache-debug td{
+	border: 1px solid #DFDFDF;
+	padding: 5px;
+}
+
+#memcache-debug th.right, #memcache-debug td.right{
+	text-align: right;
+}
+
+#memcache-debug .alternate {
+	background-color: #FCFCFC;
+}
+
+#memcache-debug .memcache-hidden {
+	display: none;
+}
+
+#memcache-log, #memcache-groups, #memcache-stats {
+	margin-left: 20px;
+}
+
+#memcache-debug .memcache-toggle {
+	width: 250px;
+	background-color: #F0F0F0;
+	border: 1px solid #DFDFDF;
+	margin-top: 10px;
+}
+
+#memcache-debug .memcache-inactive {
+	width: 300px;
+	padding: 10px;
+	margin-top: 10px;
+	background-color: #F0F0F0;
+	border: 1px solid #DFDFDF;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+	color: #BC0B0B;
+}
