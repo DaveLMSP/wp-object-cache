@@ -2,43 +2,100 @@
  * Default Styles for memcached-monitor
 */
 
-#memcache-debug {
-	max-width: 1000px;
-	padding: 10px 100px;
-	font-size: 11px;
-	background-color: #FFFFFF;
-	color: #333333;
+#memcache-wrap {
+	display: none;
 }
 
-#memcache-debug h2 {
+.ui-dialog.memcache-ui {
+	z-index: 9999;
+	padding: 0;
+	background-color: #f1f1f1;
+	overflow: hidden;
+	font-size: 13px;
+}
+
+.ui-dialog.memcache-ui .ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix.ui-draggable-handle {
+	padding: 0.3em 0.8em 0;
+	border-radius: 0;
+	border-bottom: none;
+	background-color: #333;
+	color: #fff;
+}
+
+.ui-dialog.memcache-ui .ui-dialog-title {
 	font-size: 16px;
-	font-weight: bold;
-	color: #464646;
-	margin-bottom: 0px;
+	line-height: 21px;
+}
+
+.ui-dialog.memcache-ui .ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix {
+	padding: 0.7em;
+	border-top: 1px solid #666;
+}
+
+.ui-dialog.memcache-ui .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
+	cursor: pointer;
+	float: right;
+	height: 28px;
+	margin: 0.5em 0.4em !important;
+	padding: 0 10px 1px;
+	background: #0085ba none repeat scroll 0 0;
+	box-shadow: 0 1px 0 #006799;
+	border-color: #0073aa #006799 #006799;
+	border-radius: 3px;
+	border-style: solid;
+	border-width: 1px solid;
+	color: #fff;
+	text-decoration: none;
+	text-transform: none;
+	text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+	font-size: 1em;
+	font-weight: normal;
+	line-height: 26px;
+}
+
+#wpadminbar li#wp-admin-bar-memcache-show-debug {
+	display: block;
+}
+
+#memcache-debug {
+	padding: 1.2em;
+	color: #23282D;
+	overflow-y: scroll;
+	clear: both;
 }
 
 #memcache-debug h3 {
-	margin: 5px;
-	font-size: 14px;
+	margin: 0.3em;
+	font-size: 0.9em;
 	font-weight: bold;
+	color: #fff;
 }
 
 #memcache-debug table{
-	margin-top: 10px;
+	margin: 0.7em 0;
 	min-width: 250px;
+	table-layout: auto;
+	width: auto;
+	font-size: 0.8em;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 #memcache-debug thead{
-	background-color: #F1F1F1;
+	background-color: #e0e0e0;
 }
 
 #memcache-debug tbody{
-	background-color: #F9F9F9;
+	background-color: #f9f9f9;
+}
+
+#memcache-debug th {
+	font-weight: bold;
 }
 
 #memcache-debug th, #memcache-debug td{
-	border: 1px solid #DFDFDF;
-	padding: 5px;
+	border: 1px solid #666;
+	padding: 0.3em;
 }
 
 #memcache-debug th.right, #memcache-debug td.right{
@@ -54,24 +111,43 @@
 }
 
 #memcache-log, #memcache-groups, #memcache-stats {
-	margin-left: 20px;
+	margin-left: 1.2em;
 }
 
 #memcache-debug .memcache-toggle {
 	width: 250px;
-	background-color: #F0F0F0;
-	border: 1px solid #DFDFDF;
-	margin-top: 10px;
+	background-color: #333;
+	border: 1px solid #666;
+	margin-bottom: 0.7em;
+	color: #fff;
+}
+
+#memcache-debug .memcache-toggle.open {
+	background-color: #0073AA;
 }
 
 #memcache-debug .memcache-inactive {
 	width: 300px;
-	padding: 10px;
-	margin-top: 10px;
-	background-color: #F0F0F0;
-	border: 1px solid #DFDFDF;
+	padding: 0.7em;
+	margin-top: 0.7em;
+	background-color: #e0e0e0;
+	border: 1px solid #666;
 	text-align: center;
 	font-weight: bold;
-	font-size: 14px;
-	color: #BC0B0B;
+	color: #bc0b0b;
+}
+
+@media( max-width: 1164px ) {
+	#memcache-debug {
+		padding: 0.7em;
+	}
+	#memcache-debug .drop {
+		display: none;
+	}
+}
+
+@media( max-width: 681px ) {
+	#wpadminbar li#wp-admin-bar-memcache-show-debug {
+		display: none;
+	}
 }

@@ -1,9 +1,8 @@
 <?php
 /*
-Plugin Name: Memcached
-Description: Memcached backend for the WP 3.5 Object Cache.
-Version: 4.0.0
-Plugin URI: http://www.thedolancompany.com/
+Plugin Name: WP Memcached
+Description: Memcached backend for the WordPress Object Cache.
+Version: 4.1.0
 Author: Dave Long, Kris Linnell
 
 Install this file to wp-content/object-cache.php
@@ -237,7 +236,6 @@ class WP_Object_Cache {
 	var $global_groups = array ( 'users', 'userlogins', 'usermeta', 'site-options', 'site-lookup', 'blog-lookup', 'blog-details', 'rss' );
 	var $no_mc_groups = array( 'comment', 'counts' );
 	var $autoload_groups = array ( 'options' );
-	var $cache_enabled = true;
 
 	// Local variables
 	var $cache = array();
@@ -271,7 +269,10 @@ class WP_Object_Cache {
 		array_push( $this->stats['log'], 'Object Cache constructor ' . rand( 1000,9999 ) );
 
 		// Only setup memcache if we're using it
-		if( class_exists( 'Memcached' ) && WP_OBJECT_CACHE && !file_exists( DISABLE_FILE_PATH . '/no-cache.txt'  ) ) {
+		if( file_exists( DISABLE_FILE_PATH . '/no-cache.txt'  ) || !WP_OBJECT_CACHE ) {
+			array_push( $this->stats['log'], 'Using session cache only - object cache has been deactivated.' );
+		}
+		elseif( class_exists( 'Memcached' ) ) {
 			if ( isset( $memcached_servers ) ) {
 				$servers = $memcached_servers;
 			}
@@ -293,18 +294,18 @@ class WP_Object_Cache {
 			}
 
 			// Confirm memcached is working before setting active
-			$stats = $this->mc->getStats();
-			if( !empty( $stats ) ) {
+			$status = $this->mc->set( 'memcache-test-value', 1, 1 );
+			if( $status ) {
 				$this->memcache_active = true;
+				$this->mc->delete( 'memcache-test-value' );
 			}
-			// Memcached not working
 			else {
-				array_push( $this->stats['log'], 'Using session cache only - object cache is not available.' );
+				array_push( $this->stats['log'], 'Using session cache only - error connecting to memcached.' );
 			}
 		}
 		// Memcached has been deactivated
 		else {
-			array_push( $this->stats['log'], 'Using session cache only - object cache has been deactivated.' );
+			array_push( $this->stats['log'], 'Using session cache only - object cache is not available.' );
 		}
 		// Run internal init sequence
 		$this->init();
