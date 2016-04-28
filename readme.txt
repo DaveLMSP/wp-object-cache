@@ -1,8 +1,8 @@
 === WP Memcached ===
-Contributors: davelmsp
+Contributors: dystrust
 Tags: cache, memcache, memcached, object cache, object caching, smart cache
 Requires at least: 3.5
-Tested up to: 4.4.2
+Tested up to: 4.5.1
 Stable tag: 4.1.0
 License: GPLv3
 
